@@ -4,6 +4,8 @@ By default, install or update from each repository's latest default-branch conte
 
 Install selected components at user scope through the target agent's supported plugin, skill, or MCP installation mechanism. Confirm replacements and back up affected files; preserve unselected content and settings. Install complete skill suites with their required resources, licenses, and notices. Follow each project's current documentation for supported installation methods and runtime dependencies.
 
+Components can be selected independently. The global instructions work alone at user scope and keep their authorization, evidence, communication, and delivery safeguards; they route engineering work to Dev only when it is installed and applicable. Production interface implementation requires Dev.
+
 ## Included components
 
 | Domain | Component | Files | Installation |
@@ -12,7 +14,7 @@ Install selected components at user scope through the target agent's supported p
 | Software engineering | Dev | [Dev suite](skills/dev/SKILL.md) | All 15 sibling directories: `dev`, `dev-how`, `dev-why`, `dev-architect`, `dev-arena`, `dev-build`, `dev-clean`, `dev-diagnose`, `dev-perf`, `dev-test`, `dev-review`, `dev-git`, `dev-issue`, `dev-reflect`, `dev-eval` |
 | Interface design | Design | [Design suite](skills/design/SKILL.md) | `design`, `design-intent`, `design-build`, `design-review` as sibling directories; add Dev for implementation |
 
-Install Dev with all referenced resources and [third-party notices](skills/dev/THIRD-PARTY-NOTICES.md). Its router selects the needed responsibilities; direct role invocation inherits the same applicable contracts. Issue work, task reflection, behavior evaluation, and sustained optimization are explicitly requested. Core instructions use the target host's available capabilities without model names or host adapters. Missing independent agent capability is reported as an unmet gate for nontrivial changes, rather than simulated.
+Install Dev with all referenced resources, and copy the repository [LICENSE](LICENSE) alongside each installed skill. Its router selects the needed responsibilities; direct role invocation inherits the same applicable contracts. Issue work, task reflection, behavior evaluation, and sustained optimization are explicitly requested. Core instructions use the target host's available capabilities without model names or host adapters. Missing independent agent capability is reported as an unmet gate for nontrivial changes, rather than simulated.
 
 ## External skills and MCP servers
 

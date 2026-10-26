@@ -39,5 +39,3 @@ For a defect, establish failing behavior and discriminate plausible causes befor
 Arrange the separate Tester and Reviewer required for nontrivial changes. Give the Tester original requirements and raw evidence, not implementation-derived answers. Send objective results to the Reviewer for engineering assessment. Resolve accepted findings through their owners and verify changed assumptions. Positive review does not replace tests; passing tests do not settle engineering tradeoffs.
 
 Read `dev-git` before repository changes; one coordinator owns shared Git state. With remote-write authorization, advance PRs to `merge-ready`; Shipping requires authorization covering merge or delivery. Finish when applicable gates and the authorized endpoint are satisfied, or report precise unfinished obligations. Issue filing, background monitoring, and session-history mining are not incidental completion work.
-
-Adapted source material and its license are recorded in [third-party notices](THIRD-PARTY-NOTICES.md).
