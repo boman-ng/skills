@@ -7,7 +7,7 @@ description: Coordinate development, fixes, refactoring, independent testing, en
 
 Own the requested outcome through its authorized delivery endpoint. Read the [engineering contract](references/engineering-contract.md), [collaboration rules](references/collaboration.md), and [verification policy](references/verification-policy.md). These references also govern direct role invocation.
 
-The contract's [engineering objective](references/engineering-contract.md#engineering-objective) governs every route: keep complexity proportionate to current obligations, add no speculative mechanisms or defenses, and keep required design exploration.
+The contract's [engineering objective](references/engineering-contract.md#engineering-objective) governs every route: keep complexity proportionate to current obligations, add no speculative mechanisms or defenses, and do not cancel required design exploration.
 
 ## Route By Responsibility
 

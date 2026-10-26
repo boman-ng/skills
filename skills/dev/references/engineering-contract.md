@@ -7,7 +7,7 @@ Apply this contract with the [collaboration rules](collaboration.md) and [verifi
 Within the requested outcome and applicable contracts, protect long-term maintainability. Two goals take precedence over the engineering rules below when those rules can be read to favor a larger, more general, or more defended system:
 
 1. **Suppress complexity growth.** Do not add concepts, states, paths, configuration, or coordination that a maintainer must understand, change, verify, or operate unless a current obligation requires it.
-2. **Suppress over-engineering.** Do not add extension points, abstractions, compatibility paths, or defenses beyond a current obligation, actual independent variation, a concrete failure mode, or required recovery. Design for present obligations, not hypothetical futures.
+2. **Suppress over-engineering.** Do not add extension points, abstractions, compatibility paths, or defenses beyond what a current obligation, actual independent variation, a concrete failure mode, or required recovery justifies. Design for present obligations, not hypothetical futures.
 
 Required safeguards for security, privacy, data integrity, recovery, compatibility obligations, and external contracts, including unresolved protections, are not over-engineering; keep them. These goals do not override required verification, role independence, authorization, or explicit user obligations, and they govern the system you retain, not the exploration needed to choose it. Judge complexity by the knowledge and obligations the system carries, not by diff size.
 
