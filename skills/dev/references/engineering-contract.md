@@ -27,13 +27,17 @@ Align unresolved choices that materially change business behavior, public contra
 
 ## Model Before Mechanism
 
-Start with domain meaning, data shapes, valid states, invariants, rule owners, and caller usage. Derive the interface from realistic use, including failure and lifecycle obligations. A state machine can make transitions explicit; a discriminated model can exclude impossible combinations; a table can give repeated policy one owner. Use each only when it fits actual rules.
+Start with domain meaning, data shapes, valid states, invariants, rule owners, and caller usage. Derive the interface from realistic use, including failure and lifecycle obligations. Implementations of one contract must preserve its observable guarantees and invariants; contract changes are separate decisions. Use inheritance only for a genuine subtype that satisfies those guarantees, and otherwise prefer composition.
 
-DDD, Clean Architecture, and Hexagonal Architecture are optional techniques. Useful outcomes include clear domain meaning, localized policy, and isolation from external protocols; they do not mandate layers, classes, ports, repositories, or services. Functions and transaction scripts can own coherent business policy.
+DDD, Clean Architecture, and Hexagonal Architecture are optional techniques. Useful outcomes include clear domain meaning, localized policy, and isolation from external protocols; they do not mandate layers, classes, ports, repositories, or services. Functions and transaction scripts can own coherent business policy. A state machine can make transitions explicit, a discriminated model can exclude impossible combinations, and a table can give repeated policy one owner; use each only when it fits actual rules.
 
-Prefer modules that hide substantial complexity behind a small meaningful interface. Judge depth by the knowledge callers can forget, not method count or file size. Avoid splitting knowledge by execution phase when one change then spreads across every phase. Distinct business meanings, deployment boundaries, and failure obligations can justify separate owners even when syntax looks alike.
+Prefer modules that hide substantial complexity behind a small meaningful interface. Give each module one coherent responsibility and reason to change, keep changeable implementation decisions inside it, and expose only the narrow contract callers need without ceremonial fragmentation. Use direct collaborators' contracts rather than reaching through their internals; call-chain length alone does not decide this. Judge depth by the knowledge callers can forget, not method count or file size.
 
-Separate business policy from storage, transport, presentation, and framework mechanics at real boundaries. Use existing composition and visibility mechanisms. A small adapter is appropriate for a real external protocol difference, even with one implementation. Delete transparent wrappers that add no policy or isolation; do not replace useful boundaries with repeated caller knowledge. Add extension points for actual independent variation, not hypothetical futures.
+Keep each piece of system knowledge with one owner. Avoid splitting knowledge by execution phase when one change then spreads across every phase. Distinct business meanings, deployment boundaries, and failure obligations can justify separate owners even when syntax looks alike; similarity alone does not justify abstraction. Extract a helper when it gives genuinely shared logic one owner, isolates a complex boundary, or names a concept that makes the caller clearer. Do not extract for hypothetical reuse or fragment simple expressions; do not force unrelated logic into one function.
+
+Separate business policy from storage, transport, presentation, framework mechanics, and other implementation details at real dependency boundaries; interfaces are not required everywhere. Use existing composition and visibility mechanisms. Keep a small adapter for a genuine external protocol difference, even with one implementation, and remove transparent wrappers that add no policy or isolation rather than making callers repeat that knowledge.
+
+Before building, check existing project and platform capabilities and established implementations; assess fit, provenance, license, and maintenance, and explain a consequential custom choice. Add extension points for actual independent variation, not hypothetical futures; remove speculative hooks and obsolete interfaces.
 
 Inspect runtime registration and affected callers before relocating responsibility. Correct the owning model rather than sustaining aliases, flags, and parallel obsolete paths. Use [dev-architect](../../dev-architect/SKILL.md) and independent alternatives when contracts, shapes, or module organization change.
 
@@ -41,9 +45,11 @@ Inspect runtime registration and affected callers before relocating responsibili
 
 Prefer separate ownership of state when sharing is unnecessary. Where an invariant genuinely spans writes, retain atomic enforcement and justified coordination. Database constraints, transactions, and authorization checks are not redundant merely because a caller prechecks them; inspect bypass paths and races.
 
+Validate unknown input at its owning boundary, then pass values whose guarantees are established inward. Do not repeat one check solely because another layer also checks it when that guarantee still holds. Static types do not prove external data trustworthy; trust-boundary, authorization, database, and concurrency checks remain independently required.
+
 Define outcomes for external effects, including timeout, partial failure, repeated delivery, and unknown outcomes where applicable. A timeout does not prove an operation never ran. Reuse platform controls; retries need safe effect semantics, plausible recovery, and bounded effort. A fallback must deliver an allowed result without concealing failure or amplifying load.
 
-Keep controls justified by trust boundaries, invariants, concrete failures, or required recovery. Remove speculative retries, swallowed errors, duplicate enforcement of one duty, and unnecessary configuration. Similar checks can protect different obligations. Preserve unresolved security, privacy, data integrity, recovery, and external-contract protections while investigating their necessity.
+Keep controls justified by trust boundaries, invariants, concrete failures, or required recovery. Remove speculative retries and fallbacks, swallowed errors, duplicate enforcement of one duty, and unnecessary configuration. Similar checks can protect different obligations. Preserve unresolved security, privacy, data integrity, recovery, and external-contract protections while investigating their necessity. Keep changeable policy and environment values at their owning configuration boundary; stable constants need no artificial configuration.
 
 ## Evolution And Retirement
 
@@ -57,6 +63,6 @@ Use [dev-clean](../../dev-clean/SKILL.md) for retirement evidence and counterexa
 
 ## Complete The Authorized Outcome
 
-Complete affected callers, production wiring, packaging, configuration, and necessary documentation. Derived-state changes need an identified source of truth, allowed staleness, and rebuild behavior. Operational changes need observable success/failure and usable recovery. Follow project mechanisms without assuming zero downtime, dual writes, or a particular deployment architecture.
+Complete affected callers, production wiring, packaging, configuration, and necessary documentation. Derived-state changes need an identified source of truth, allowed staleness, and rebuild behavior. When a generated client or other generated artifact changes, follow the project's actual generated relation: change the authoritative source, regenerate, and verify the result. Do not assume a generator exists when the project defines none. Operational changes need observable success/failure and usable recovery. Follow project mechanisms without assuming zero downtime, dual writes, or a particular deployment architecture.
 
 Read [dev-git](../../dev-git/SKILL.md) before repository changes and apply it once per coordinated task. Use the verification policy for evidence and acceptance. Report material decisions, actual results, and remaining obligations. Distinguish locally checked, merge-ready, merged, published, and observed runtime states; one does not establish the next.

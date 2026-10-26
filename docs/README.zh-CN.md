@@ -12,11 +12,13 @@ Skills 为 AI Agent 提供**通用指令**和 **Dev**、**Design** 技能套件�
 
 | 领域 | 组件 | 用途 |
 |---|---|---|
-| 通用 | [全局指令](../instructions/AGENTS.md) | 指导工程决策、沟通和任务交付的工作原则 |
+| 通用 | [全局指令](../instructions/AGENTS.md) | 通用决策、授权、证据、沟通与交付原则；按需路由，工程方法归 Dev 负责 |
 | 软件工程 | [Dev 套件](../skills/dev/SKILL.md) | 通过 15 个职责路由工程任务：调查、独立候选探索、实施、客观测试、工程审查及 PR 交付 |
 | 界面设计 | [Design 套件](../skills/design/SKILL.md) | 澄清需求、规划和构建界面、评审可用性与视觉质量 |
 
 Dev 由统一入口路由到可以独立调用的职责技能。非平凡改动分别由实施者、客观测试者和工程审查者负责；设计及实现存在需要探索的选择时，采用独立候选比较。优先遵循项目已有治理；没有既定流程时，默认使用任务分支、PR 和保留原子提交的交付方式。Issue 工作、任务复盘、行为评估及持续性能优化由明确请求触发。过程记录默认放在任务专属临时目录，有长期价值的项目测试和工具保存在所属项目。
+
+全局指令可独立使用：它提供通用原则和按需路由，工程方法由 Dev 负责。
 
 - **界面实现：** 同时选择 Design 和 Dev。[外部技能与 MCP 服务](#外部技能与-mcp-服务)提供其他能力。
 - **可选需求澄清：** Answer me with HTML 可通过交互页面帮助澄清需求：在页面中回答，再将 Reply 复制回聊天。
@@ -72,7 +74,8 @@ Dev 由统一入口路由到可以独立调用的职责技能。非平凡改动�
 | 仓库 | 用途 | 许可 |
 |---|---|---|
 | [ByteByteGoHq/system-design-101](https://github.com/ByteByteGoHq/system-design-101) | System Design 101：用图解介绍系统架构、数据库、分布式系统与工程取舍 | [CC BY-NC-ND 4.0](https://github.com/ByteByteGoHq/system-design-101/blob/main/LICENSE.md) |
-| [cursor/plugins — pstack](https://github.com/cursor/plugins/tree/e5136d82418d2db3165ea1050d17577cd618cc05/pstack) | 为 Dev 的候选探索、委派实施、验证、PR 交付、性能、复盘及评估提供方法参考，按宿主无关的职责体系改编 | [MIT 声明](../skills/dev/THIRD-PARTY-NOTICES.md) |
+| [cursor/plugins — pstack](https://github.com/cursor/plugins/tree/e5136d82418d2db3165ea1050d17577cd618cc05/pstack) | 为 Dev 的候选探索、委派实施、验证、PR 交付、性能、复盘及评估提供方法参考，按宿主无关的职责体系改编 | [MIT](../LICENSE) |
+| [anomalyco/opencode — AGENTS.md](https://github.com/anomalyco/opencode/blob/5b41e1f977db069603fe0c8f9c668a79e05b4013/AGENTS.md) | 为边界校验、helper 抽取判断和通过权威源更新生成物提供参考，并改编入 Dev 工程契约 | [MIT](../LICENSE) |
 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/49dd158d1076134a641b33efb035946536778336) | 此参考快照为 Skills 的模块设计、领域语言、增量反馈、决策依赖和指令组织提供参考 | [MIT](https://github.com/mattpocock/skills/blob/49dd158d1076134a641b33efb035946536778336/LICENSE) |
 
 <a id="反馈"></a>
@@ -86,4 +89,4 @@ Dev 由统一入口路由到可以独立调用的职责技能。非平凡改动�
 
 ## 📜 许可
 
-本仓库的原创内容采用 [MIT 许可](../LICENSE)。Dev 的改编内容保留[第三方声明](../skills/dev/THIRD-PARTY-NOTICES.md)。外部项目保留各自的许可和声明。
+本仓库的原创及改编内容采用共同的 [MIT 许可](../LICENSE)，其中包含 pstack 和 OpenCode 的上游版权声明。外部项目保留各自的许可和声明。
