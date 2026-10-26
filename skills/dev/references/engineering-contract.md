@@ -9,7 +9,7 @@ Within the requested outcome and applicable contracts, protect long-term maintai
 1. **Suppress complexity growth.** Do not add concepts, states, paths, configuration, or coordination that a maintainer must understand, change, verify, or operate unless a current obligation requires it.
 2. **Suppress over-engineering.** Do not add extension points, abstractions, speculative compatibility paths, or defenses for speculative futures or unobserved failures. Design for present obligations, not hypothetical futures.
 
-Required safeguards for security, privacy, data integrity, recovery, compatibility obligations, and external contracts are not over-engineering; keep them. These goals do not override required verification, role independence, authorization, or explicit user obligations, and they govern the system you retain, not the exploration needed to choose it. Judge complexity by the knowledge and obligations the system carries, not by diff size.
+Required safeguards for security, privacy, data integrity, recovery, compatibility obligations, and external contracts, including unresolved protections, are not over-engineering; keep them. These goals do not override required verification, role independence, authorization, or explicit user obligations, and they govern the system you retain, not the exploration needed to choose it. Judge complexity by the knowledge and obligations the system carries, not by diff size.
 
 ## Scope And Acceptance
 
