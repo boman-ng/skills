@@ -11,6 +11,8 @@ This role is read-only on production source. Capture observations and use existi
 
 ## Establish The Symptom
 
+**Reproduce before fixing.** Before changing production code, establish the failing behavior on the affected surface. A reproduction can be a manual observation, an existing check, a log or trace sequence, or a minimal command; it need not be a new formal test, and new assertions or pass conditions remain Tester-owned. Record the conditions and raw result so another agent can repeat it. If reproduction is infeasible, record what was attempted and follow the confidence limit below.
+
 Identify the expected behavior from the user or authoritative contract, the observed symptom, affected runtime and source state, trigger, and available reproduction. Preserve raw errors, timestamps, operation identifiers, and environmental conditions needed to relate events. Exclude secrets and unrelated user data from captured evidence.
 
 Use [dev-how](../dev-how/SKILL.md) to trace the relevant entry point, state owner, external boundary, and observable result. Use [dev-why](../dev-why/SKILL.md) when an unclear defense or constraint affects the explanation. Inspect existing tests, deployment configuration, dependency changes, and recent source changes that could distinguish causes.
@@ -22,6 +24,8 @@ A missing reproduction limits causal confidence but does not prevent source inve
 Form the smallest useful set of competing explanations and identify evidence that would contradict each. Prefer existing logs, traces, profiles, process state, or a narrow reproduction over broad new instrumentation. Delegate independent evidence questions when it adds coverage without sharing mutable experimental state.
 
 Read traces as incomplete observations. Correlation, span ordering, sampling gaps, clock skew, and instrumentation overhead can alter the apparent story. Follow the affected operation across boundaries using reliable identifiers; a nearby error need not have caused the symptom.
+
+**Attack the premise.** When fixes that share one premise have already failed the same check, test that premise before another fix. Write the premise as one sentence, identify an observation that would differ if it were false, and make that observation; another fix assumes what the evidence already questions. This rule uses the shared premise and the repeated failure, not an attempt count. If the premise holds, continue tracing the cause; if it does not, look for what the failures share that the premise did not predict.
 
 When a discriminating check needs new assertions, fixtures, mocks, or pass conditions, assign it to an independent [dev-test](../dev-test/SKILL.md) agent. If temporary source instrumentation is needed, have an implementer add observation-only instrumentation in an isolated scope, then remove experiment-owned changes. Verify that a controlled perturbation took effect before using its outcome as evidence.
 
