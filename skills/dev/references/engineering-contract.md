@@ -2,6 +2,15 @@
 
 Apply this contract with the [collaboration rules](collaboration.md) and [verification policy](verification-policy.md) to the affected scope. The [Dev router](../SKILL.md) names the public roles. Read relevant specialties only; direct invocation keeps shared gates and delegation keeps its assigned responsibility.
 
+## Engineering Objective
+
+Within the requested outcome and applicable contracts, protect long-term maintainability. Two goals take precedence over the engineering rules below when those rules can be read to favor a larger, more general, or more defended system:
+
+1. **Suppress complexity growth.** Do not add concepts, states, paths, configuration, or coordination that a maintainer must understand, change, verify, or operate unless a current obligation requires it.
+2. **Suppress over-engineering.** Do not add extension points, abstractions, speculative compatibility paths, or defenses for speculative futures or unobserved failures. Design for present obligations, not hypothetical futures.
+
+Required safeguards for security, privacy, data integrity, recovery, compatibility obligations, and external contracts are not over-engineering; keep them. These goals do not override required verification, role independence, authorization, or explicit user obligations, and they govern the system you retain, not the exploration needed to choose it. Judge complexity by the knowledge and obligations the system carries, not by diff size.
+
 ## Scope And Acceptance
 
 Establish observable outcomes, callers, constraints, and acceptance from the request and current contracts. Choose the simplest complete result for present requirements, considering its cost to understand, change, verify, and operate. Diff size is not the objective. Reconsider the affected model when concrete rule duplication, illegal states, caller burden, or change amplification warrants it.
@@ -52,6 +61,8 @@ Define outcomes for external effects, including timeout, partial failure, repeat
 Keep controls justified by trust boundaries, invariants, concrete failures, or required recovery. Remove speculative retries and fallbacks, swallowed errors, duplicate enforcement of one duty, and unnecessary configuration. Similar checks can protect different obligations. Preserve unresolved security, privacy, data integrity, recovery, and external-contract protections while investigating their necessity. Keep changeable policy and environment values at their owning configuration boundary; stable constants need no artificial configuration.
 
 ## Evolution And Retirement
+
+**Subtract before adding.** Before designing an addition, remove dead code, obsolete paths, unused configuration, and abandoned temporary paths within the authorized scope, then design from the simpler base. When removal is not authorized or not yet supported, state what remains and why. Removal evidence and retained obligations follow the rules in this section.
 
 Within authorized code scope, retain compatibility only when required by the user or project contracts. Migrate in-scope callers with the owner and retire the superseded path. Separately establish obligations for durable data, in-flight messages, coexisting versions, and out-of-scope consumers; use necessary migration or narrow translation without inventing permanent compatibility.
 
